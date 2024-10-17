@@ -2,7 +2,6 @@
 import { NextRequest, NextResponse } from "next/server";
 export { default } from "next-auth/middleware";
 import { getToken } from "next-auth/jwt";
-import { url } from "inspector";
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
@@ -18,7 +17,7 @@ export async function middleware(request: NextRequest) {
 
 ))
  { return NextResponse.redirect(new URL("/dashboard", request.url));}
-  if(!token && url.pathname.startsWith('dashboard')){
+  if(!token && url.pathname.startsWith('/dashboard')){
       return NextResponse.redirect(new URL("/sign-in", request.url));
   }
   return NextResponse.next()
