@@ -4,7 +4,7 @@ export const usernameValidation = z
     .string()
     .min(2,"Username must be atleast 2 characters")
     .max(20,"Username must be no more than 20 characters")
-    .regex(/^[a-zA-z0-9_]+$/,"Username must not contain speacial characters")
+    .regex(/^[a-zA-z0-9_]+$/,"Username must not contain space & speacial characters")
 
 
 export const  signUpSchema = z.object({
