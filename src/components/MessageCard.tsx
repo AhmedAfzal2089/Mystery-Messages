@@ -28,17 +28,17 @@ import { ApiResponse } from "@/types/ApiResponse";
 
 type MessageCardProps={
   message:Message;
-  onMessageDelete:(messageId:string )=>void
+  onMessageDelete:(messageId:string )=>void 
 }
 
 const MessageCard = ({message, onMessageDelete}:MessageCardProps) => {
   const {toast} = useToast()
-  const handleDeleteConfirm= () => {
-    const response = axios.delete<ApiResponse>(`/api/delete-message/${message._id}`)
+  const handleDeleteConfirm = async () => {
+    const response = await axios.delete<ApiResponse>(`/api/delete-message/${message._id}`)
     toast({
       title:response.data.message
     })
-    onMessageDelete(message._id)
+    onMessageDelete(message._id as string)
   }
   
   return (
